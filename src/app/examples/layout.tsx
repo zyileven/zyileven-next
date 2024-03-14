@@ -12,6 +12,7 @@ import {
     NavigationMenuTrigger,
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+import Image from "next/image";
 
 const components: { title: string; href: string; description: string }[] = [
     {
@@ -60,9 +61,9 @@ export default function ExampleLayout({
     console.log("pathname", pathname)
     return (
         <div>
-            <div className="w-[100%] border-b-[1px] border-[#eee] min-h-[60px] flex">
-                <div className="max-w-[30%] w-[200px]">
-                    logo
+            <div className="w-[100%] border-b-[1px] border-[#eee] min-h-[60px] flex shadow-md">
+                <div className="max-w-[30%] bg-[#22242c] min-w-[199px] h-[60px] overflow-hidden relative flex justify-center">
+                    <Image src={"/logo.png"} style={{objectFit: "contain", width: "100%"}} fill alt="logo" />
                 </div>
                 <div className="flex items-center" >
                     <NavigationMenu>
@@ -70,12 +71,15 @@ export default function ExampleLayout({
                             <NavigationMenuItem>
                                 <NavigationMenuTrigger>Examples</NavigationMenuTrigger>
                                 <NavigationMenuContent>
-                                    <ul className="grid gap-3 p-4 w-[150px] lg:grid-cols-[.75fr_1fr]">
+                                    <ul className="gap-3 p-4 w-[150px]">
                                         <ListItem href="/examples/css" title="css">
                                             css
                                         </ListItem>
                                         <ListItem href="/examples/js" title="js">
                                             js
+                                        </ListItem>
+                                        <ListItem href="/examples/algorithm" title="algorithm">
+                                            algorithm
                                         </ListItem>
                                     </ul>
                                 </NavigationMenuContent>

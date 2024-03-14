@@ -3,12 +3,13 @@ import React, { useEffect, useRef, FC, ReactNode } from "react";
 import hljs from "highlight.js";
 // import "highlight.js/styles/github.css";
 import "highlight.js/styles/monokai.css";
+import { cn } from "@/lib/utils";
 
 const CodeBlock: FC<{
-    language: string,
+    language?: string,
     className?: string,
     code: string,
-}> = ({ language, className, code }) => {
+}> = ({ language = "js", className, code }) => {
     const codeBlockRef = useRef(null);
 
     useEffect(() => {
@@ -19,7 +20,7 @@ const CodeBlock: FC<{
     }, [codeBlockRef]);
 
     return (
-        <pre className={className}>
+        <pre className={cn("mt-[20px] max-w-[100%]", className)}>
             <code ref={codeBlockRef} className={`language-${language} text-left`}>
                 {code}
             </code>
